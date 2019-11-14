@@ -1,3 +1,12 @@
 body{
   background-color: #3D5A6C;
 }
+#mapdiv{
+  margin-top: 20px;
+}
+
+@media (max-width: 767.98px){
+  #mapdiv{
+    margin-top: 0px;
+  }
+}
