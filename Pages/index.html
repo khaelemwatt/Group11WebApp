@@ -52,6 +52,12 @@
       </div>
     </div>
   </div>
+  <div class="card mx-auto col-md-6 col-sm-12 img-fluid" style="width: 540px;">
+    <div class="card-body">
+      <h5 id="shop-name" class="card-title">Try clicking map markers!</h5>
+      <p id = "shop-address" class="card-text">Clicking a map marker will show the shop title and address here!</p>
+    </div>
+  </div>
   <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
     var map = new mapboxgl.Map({
@@ -62,71 +68,77 @@
     });
 
     var geojson = {
-      type:"FeatureCollection",
-      features:[{
-        type:"Feature",
-        geometry:{
-          type:"Point",
-          coordinates:[-2.992711, 56.459533]
+      type: "FeatureCollection",
+      features: [{
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.992711, 56.459533]
+          },
+          properties: {
+            title: "Spokes Cycles",
+            description: "8 Annfield Rd, Dundee DD1 5JH"
+          }
         },
-        properties:{
-          title:"Spokes Cycles",
-          description:"8 Annfield Rd, Dundee DD1 5JH"
-        }
-      },
-      {
-        type:"Feature",
-        geometry:{
-          type:"Point",
-          coordinates:[-2.962465, 56.461767]
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.962465, 56.461767]
+          },
+          properties: {
+            title: "Electric Bikes Scotland",
+            description: "City Quay, Camperdown St, Dundee DD1 3JA"
+          }
         },
-        properties:{
-          title:"Electric Bikes Scotland",
-          description:"City Quay, Camperdown St, Dundee DD1 3JA"
-        }
-      },
-      {
-        type:"Feature",
-        geometry:{
-          type:"Point",
-          coordinates:[-2.959706, 56.462492]
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.959706, 56.462492]
+          },
+          properties: {
+            title: "City Hire Centre and Coffee to go",
+            description: "City Quay, Camperdown St, Dundee DD1 3JA"
+          }
         },
-        properties:{
-          title:"City Hire Centre and Coffee to go",
-          description:"City Quay, Camperdown St, Dundee DD1 3JA"
-        }
-      },
-      {
-        type:"Feature",
-        geometry:{
-          type:"Point",
-          coordinates:[-2.970262, 56.459544]
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.970262, 56.459544]
+          },
+          properties: {
+            title: "Tiso Dundee",
+            description: "22 Whitehall St, Dundee DD1 4AF"
+          }
         },
-        properties:{
-          title:"Tiso Dundee",
-          description:"22 Whitehall St, Dundee DD1 4AF"
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.956458, 56.472992]
+          },
+          properties: {
+            title: "Nicholsons Cycles & Electric Bikes",
+            description: "2-4 Forfar Rd, Dundee DD4 7AR"
+          }
         }
-      },{
-        type:"Feature",
-        geometry:{
-          type:"Point",
-          coordinates:[-2.956458, 56.472992]
-        },
-        properties:{
-          title:"Nicholsons Cycles & Electric Bikes",
-          description:"2-4 Forfar Rd, Dundee DD4 7AR"
-        }
-      }]
+      ]
     };
 
-    geojson.features.forEach(function(marker){
+    geojson.features.forEach(function(marker) {
       var el = document.createElement("div");
       el.className = "marker";
+      el.addEventListener("click", function() {
+        console.log("click");
+        document.getElementById("shop-name").innerHTML = marker.properties.title;
+        document.getElementById("shop-address").innerHTML = marker.properties.description;
+      })
       new mapboxgl.Marker(el)
         .setLngLat(marker.geometry.coordinates)
         .addTo(map);
     });
-
   </script>
 </body>
 
