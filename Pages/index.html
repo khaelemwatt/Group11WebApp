@@ -67,6 +67,8 @@
       zoom: 12
     });
 
+    map.addControl(new mapboxgl.NavigationControl())
+
     var geojson = {
       type: "FeatureCollection",
       features: [{
