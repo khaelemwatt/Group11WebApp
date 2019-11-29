@@ -5,12 +5,6 @@ body{
   margin-top: 20px;
 }
 
-@media (max-width: 767.98px){
-  #mapdiv{
-    margin-top: 0px;
-  }
-}
-
 .marker {
   background-image: url("https://i.imgur.com/MK4NUzI.png");
   background-size: cover;
@@ -18,4 +12,15 @@ body{
   height: 15px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+@media (max-width: 767.98px){
+  #mapdiv{
+    margin-top: 0px;
+  }
+
+  .marker{
+    width:20px;
+    height:20px;
+  }
 }
