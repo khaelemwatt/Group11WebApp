@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../CSS/style.css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="../CSS/animate.css">
   <title></title>
 </head>
 
@@ -139,7 +140,7 @@
       });
       map.addControl(new mapboxgl.NavigationControl());
 
-      document.getElementById("card").setAttribute("class", "card mx-auto col-md-6 col-sm-12 img-fluid");
+      document.getElementById("card").setAttribute("class", "card mx-auto col-md-6 col-sm-12 img-fluid animated fadeInUp");
       addElement("card", "div", "cardbody");
       document.getElementById("cardbody").setAttribute("class", "card-body");
       addElement("cardbody", "h5", "shop-name");
@@ -157,8 +158,7 @@
         center: [-2.993897, 56.466836],
         zoom: 12
       });
-      removeElement("cardbody")
-      document.getElementById("card").setAttribute("class", "");
+      document.getElementById("card").setAttribute("class", "card mx-auto col-md-6 col-sm-12 img-fluid animated fadeOutDown");
     }
 
     function removeElement(Id) {
