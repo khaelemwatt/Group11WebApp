@@ -34,14 +34,14 @@
     <div class="justify-content-center nav-fill" id="navbarSupportedContent">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-md-none">
-          <a class="nav-link mx-auto " href="#">Bike Hiring</a>
+          <a class="nav-link mx-auto" href="javascript:;" onclick="addMarkerMap();">Bike Hiring</a>
         </li>
       </ul>
     </div>
     <div class="justify-content-center nav-fill" id="navbarSupportedContent">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-md-none">
-          <a class="nav-link mx-auto" href="javascript:;" onclick="removeElement('map');">Cycle Routes</a>
+          <a class="nav-link mx-auto" href="javascript:;" onclick="addRoutesMap();">Cycle Routes</a>
         </li>
       </ul>
     </div>
@@ -120,6 +120,7 @@
     };
 
     function addMarkerMap() {
+      console.log("click");
       var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
