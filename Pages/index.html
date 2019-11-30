@@ -52,15 +52,19 @@
       </div>
     </div>
   </div>
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/dark-v10',
-      center: [-2.993897, 56.466836],
-      zoom: 12
-    });
-  </script>
+    <button type="button" id="Novice-Run">Novice Run</button>
+    <button type="button" id="Camperdown">Camperdown</button>
 </body>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v10',
+    center: [-2.993897, 56.466836],
+    zoom: 12
+  });
+</script>
+<script src="../scripts/mapUpdate.js"></script>
 
 </html>
