@@ -133,7 +133,6 @@
       var el = document.createElement("div");
       el.className = "marker";
       el.addEventListener("click", function() {
-        console.log("click");
         document.getElementById("shop-name").innerHTML = marker.properties.title;
         document.getElementById("shop-address").innerHTML = marker.properties.description;
       })
