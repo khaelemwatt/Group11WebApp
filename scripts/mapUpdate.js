@@ -11,6 +11,8 @@ paths.set("Sidlaw Court Dundee", "https://api.myjson.com/bins/133xr2");
 paths.set("Tay Bridge Loop", "https://api.myjson.com/bins/9xp3y");
 paths.set("Tay Rail Bridge Loop", "https://api.myjson.com/bins/1a950e");
 
+paths.set("Test", "https://api.myjson.com/bins/m6gjq");
+
 var currentRoute = undefined;
 
 function displayLayer(routeName)
@@ -69,7 +71,7 @@ function loadLayer(routeName)
 window.onload = function()
 {
   document.getElementById("Novice-Run").onclick = function() {
-    displayLayer("Novice Run");
+    displayLayer("Test");
   }
 
   document.getElementById("Camperdown").onclick = function() {
