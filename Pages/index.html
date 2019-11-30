@@ -52,12 +52,9 @@
       </div>
     </div>
   </div>
-  <div id="card" class="card mx-auto col-md-6 col-sm-12 img-fluid">
-    <div class="card-body">
-      <h5 id="shop-name" class="card-title">Try clicking map markers!</h5>
-      <p id="shop-address" class="card-text">Clicking a map marker will show the shop title and address here!</p>
-    </div>
+  <div id="card">
   </div>
+
   <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
 
@@ -141,6 +138,16 @@
           .addTo(map);
       });
       map.addControl(new mapboxgl.NavigationControl());
+
+      document.getElementById("card").setAttribute("class", "card mx-auto col-md-6 col-sm-12 img-fluid");
+      addElement("card", "div", "cardbody");
+      document.getElementById("cardbody").setAttribute("class", "card-body");
+      addElement("cardbody", "h5", "shop-name");
+      document.getElementById("shop-name").setAttribute("class", "card-title");
+      document.getElementById("shop-name").innerHTML = "Try clicking map markers!";
+      addElement("cardbody", "p", "shop-address");
+      document.getElementById("shop-address").setAttribute("class", "card-text");
+      document.getElementById("shop-address").innerHTML = "Clicking a map marker will show the shop name and address here!"
     }
 
     function addRoutesMap() {
@@ -150,6 +157,8 @@
         center: [-2.993897, 56.466836],
         zoom: 12
       });
+      removeElement("cardbody")
+      document.getElementById("card").setAttribute("class", "");
     }
 
     function removeElement(Id) {
@@ -162,7 +171,6 @@
       var newElement = document.createElement(tag);
       newElement.setAttribute('id', id);
       newElement.setAttribute("class", "img-fluid");
-      newElement.innerHTML = html;
       p.appendChild(newElement);
     }
 
