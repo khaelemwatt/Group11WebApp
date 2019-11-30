@@ -1,5 +1,6 @@
 body{
   background-color: #EDFFFA;
+  padding-bottom: 100px;
 }
 
 nav{
@@ -35,6 +36,13 @@ nav a, nav a:hover{
 @media (max-width: 767.98px){
   #mapdiv{
     margin-top: 0px;
+  }
+  #map{
+    max-height: 60vh;
+  }
+
+  #card{
+    max-height: 20vh;
   }
 
   .marker{
