@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <div class="justify-content-center nav-fill">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-none d-md-inline">
@@ -29,7 +29,7 @@
       </ul>
     </div>
   </nav>
-  <nav class="navbar fixed-bottom navbar-dark bg-dark d-md-none">
+  <nav class="navbar fixed-bottom d-md-none">
     <div class="justify-content-center nav-fill" id="navbarSupportedContent">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-md-none">
@@ -52,19 +52,97 @@
       </div>
     </div>
   </div>
+  <div class="card mx-auto col-md-6 col-sm-12 img-fluid" style="width: 540px;">
+    <div class="card-body">
+      <h5 id="shop-name" class="card-title">Try clicking map markers!</h5>
+      <p id = "shop-address" class="card-text">Clicking a map marker will show the shop title and address here!</p>
+    </div>
+  </div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: [-2.993897, 56.466836],
+      zoom: 12
+    });
+
+    map.addControl(new mapboxgl.NavigationControl())
+
+    var geojson = {
+      type: "FeatureCollection",
+      features: [{
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.992711, 56.459533]
+          },
+          properties: {
+            title: "Spokes Cycles",
+            description: "8 Annfield Rd, Dundee DD1 5JH"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.962465, 56.461767]
+          },
+          properties: {
+            title: "Electric Bikes Scotland",
+            description: "City Quay, Camperdown St, Dundee DD1 3JA"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.959706, 56.462492]
+          },
+          properties: {
+            title: "City Hire Centre and Coffee to go",
+            description: "City Quay, Camperdown St, Dundee DD1 3JA"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.970262, 56.459544]
+          },
+          properties: {
+            title: "Tiso Dundee",
+            description: "22 Whitehall St, Dundee DD1 4AF"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.956458, 56.472992]
+          },
+          properties: {
+            title: "Nicholsons Cycles & Electric Bikes",
+            description: "2-4 Forfar Rd, Dundee DD4 7AR"
+          }
+        }
+      ]
+    };
+
+    geojson.features.forEach(function(marker) {
+      var el = document.createElement("div");
+      el.className = "marker";
+      el.addEventListener("click", function() {
+        document.getElementById("shop-name").innerHTML = marker.properties.title;
+        document.getElementById("shop-address").innerHTML = marker.properties.description;
+      })
+      new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+    });
+  </script>
+  <script src="../scripts/mapUpdate.js"></script>
     <button type="button" id="Novice-Run">Novice Run</button>
     <button type="button" id="Camperdown">Camperdown</button>
 </body>
-
-<script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/dark-v10',
-    center: [-2.993897, 56.466836],
-    zoom: 12
-  });
-</script>
-<script src="../scripts/mapUpdate.js"></script>
-
 </html>
