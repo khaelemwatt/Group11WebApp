@@ -17,5 +17,6 @@
   "background_color": "#3D5A6C",
   "display": "fullscreen",
   "orientation": "portrait",
-  "theme_color": "#3D5A6C"
+  "theme_color": "#3D5A6C",
+  "scope": "Pages/"
 }
