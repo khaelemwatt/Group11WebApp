@@ -24,6 +24,18 @@ nav a, nav a:hover{
   width: 540px;
 }
 
+h1, p{
+  font-family: 'Solway', serif;
+}
+
+p{
+  font-size: regular;
+}
+
+h1{
+  font-size: extra-bold;
+}
+
 .marker {
   background-image: url("https://i.imgur.com/MK4NUzI.png");
   background-size: cover;
