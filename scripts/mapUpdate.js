@@ -37,7 +37,7 @@ function loadLayer(routeName)
     });
 }
 
-window.onload = function()
+function loadAllLayers()
 {
   for(let k of paths.keys())
   {
