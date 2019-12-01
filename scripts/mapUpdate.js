@@ -1,17 +1,4 @@
 var paths = new Map();
-/*
-paths.set("Camperdown", "https://api.myjson.com/bins/8kef2");
-paths.set("Camperdown Park", "https://api.myjson.com/bins/1a2pj2");
-paths.set("Camperdown Park Loop", "https://api.myjson.com/bins/12e7tq");
-paths.set("Dowfield Circular", "https://api.myjson.com/bins/1a6zum");
-paths.set("Dundee City Loop", "https://api.myjson.com/bins/hm6ta");
-paths.set("Dundee to Forfar Circuit", "https://api.myjson.com/bins/cbfj2");
-paths.set("Monifieth Loop", "https://api.myjson.com/bins/vdavy");
-paths.set("Novice Run", "https://api.myjson.com/bins/wk63i");
-paths.set("Sidlaw Court Dundee", "https://api.myjson.com/bins/133xr2");
-paths.set("Tay Bridge Loop", "https://api.myjson.com/bins/9xp3y");
-paths.set("Tay Rail Bridge Loop", "https://api.myjson.com/bins/1a950e");
-*/
 paths.set("Old Hawkhill", "https://api.myjson.com/bins/wnosm");
 paths.set("Magdalen Yard", "https://api.myjson.com/bins/m6gjq");
 paths.set("Sycamore", "https://api.myjson.com/bins/1ezu86");
