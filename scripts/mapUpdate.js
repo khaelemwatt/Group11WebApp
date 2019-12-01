@@ -6,7 +6,7 @@ paths.set("Unit 2 Ballingall", "https://api.myjson.com/bins/tk8g6");
 paths.set("Myrekirk", "https://api.myjson.com/bins/lxvwm");
 paths.set("Law", "https://api.myjson.com/bins/zmuti");
 
-function loadLayer(routeName)
+function loadLayer(routeName, map)
 {
   fetch(paths.get(routeName))
     .then((resp) => resp.json())
@@ -37,10 +37,10 @@ function loadLayer(routeName)
     });
 }
 
-function loadAllLayers()
+function loadAllLayers(map)
 {
   for(let k of paths.keys())
   {
-    loadLayer(k)
+    loadLayer(k, map)
   }
 }
