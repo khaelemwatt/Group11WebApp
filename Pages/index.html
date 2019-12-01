@@ -125,6 +125,18 @@
   };
 
   function addMarkerMap() {
+    var el = document.getElementById("info");
+    if (el != null) {
+      removeElement("info");
+    }
+
+    var checkMap = document.getElementById("mapdiv");
+    if (checkMap.getAttribute("style") != null) {
+      console.log("click");
+      checkMap.setAttribute("style", "display:inital;");
+      document.getElementById("class", "card mx-auto col-md-6 col-sm-12 img-fluid animated fadeInUp");
+    }
+
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
@@ -157,6 +169,15 @@
   }
 
   function addRoutesMap() {
+    var el = document.getElementById("info");
+    if (el != null) {
+      removeElement("info");
+    }
+    var checkMap = document.getElementById("mapdiv")
+    if (checkMap.getAttribute("style") != null) {
+      console.log("click");
+      checkMap.setAttribute("style", "display:inital;");
+    }
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
