@@ -8,15 +8,16 @@
   <link rel="stylesheet" href="../CSS/style.css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="../CSS/animate.css">
   <title></title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <div class="justify-content-center nav-fill">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-none d-md-inline">
-          <a class="nav-link mx-auto " href="#">Bike Hiring</a>
+          <a class="nav-link mx-auto" href="javascript:;" onclick="addMarkerMap();">Bike Hiring</a>
         </li>
       </ul>
     </div>
@@ -24,23 +25,23 @@
     <div class="justify-content-center nav-fill">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-none d-md-inline">
-          <a class="nav-link mx-auto" href="#">Cycle Routes</a>
+          <a class="nav-link mx-auto" href="javascript:;" onclick="addRoutesMap();">Cycle Routes</a>
         </li>
       </ul>
     </div>
   </nav>
-  <nav class="navbar fixed-bottom navbar-dark bg-dark d-md-none">
+  <nav class="navbar fixed-bottom d-md-none">
     <div class="justify-content-center nav-fill" id="navbarSupportedContent">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-md-none">
-          <a class="nav-link mx-auto " href="#">Bike Hiring</a>
+          <a class="nav-link mx-auto" href="javascript:;" onclick="addMarkerMap();">Bike Hiring</a>
         </li>
       </ul>
     </div>
     <div class="justify-content-center nav-fill" id="navbarSupportedContent">
       <ul class="navbar-nav nav-tabs">
         <li class="nav-item active mx-auto d-md-none">
-          <a class="nav-link mx-auto" href="#">Cycle Routes</a>
+          <a class="nav-link mx-auto" href="javascript:;" onclick="addRoutesMap();">Cycle Routes</a>
         </li>
       </ul>
     </div>
@@ -48,21 +49,137 @@
   <div class="container">
     <div class="row">
       <div id="mapdiv" class="col-md-6 col-sm-12 mx-auto p-0">
-        <div id='map' class="img-fluid" style='width: 570px; height: 500px;'></div>
+        <div id='map' class="img-fluid"></div>
       </div>
     </div>
   </div>
 </body>
+  <div id="card">
+  </div>
 
-<script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/dark-v10',
-    center: [-2.993897, 56.466836],
-    zoom: 12
-  });
-</script>
-<script src="../scripts/mapUpdate.js"></script>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhZWxlbXdhdHQiLCJhIjoiY2syczhpdGFhMGU3ejNnbnozYXB0cm03YSJ9.GCaekm2x9qIeIWZe_Kq5LA';
+
+    var geojson = {
+      type: "FeatureCollection",
+      features: [{
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.992711, 56.459533]
+          },
+          properties: {
+            title: "Spokes Cycles",
+            description: "8 Annfield Rd, Dundee DD1 5JH"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.962465, 56.461767]
+          },
+          properties: {
+            title: "Electric Bikes Scotland",
+            description: "City Quay, Camperdown St, Dundee DD1 3JA"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.959706, 56.462492]
+          },
+          properties: {
+            title: "City Hire Centre and Coffee to go",
+            description: "City Quay, Camperdown St, Dundee DD1 3JA"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.970262, 56.459544]
+          },
+          properties: {
+            title: "Tiso Dundee",
+            description: "22 Whitehall St, Dundee DD1 4AF"
+          }
+        },
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [-2.956458, 56.472992]
+          },
+          properties: {
+            title: "Nicholsons Cycles & Electric Bikes",
+            description: "2-4 Forfar Rd, Dundee DD4 7AR"
+          }
+        }
+      ]
+    };
+
+    function addMarkerMap() {
+      console.log("click");
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        center: [-2.993897, 56.466836],
+        zoom: 12
+      });
+
+      geojson.features.forEach(function(marker) {
+        var el = document.createElement("div");
+        el.className = "marker";
+        el.addEventListener("click", function() {
+          document.getElementById("shop-name").innerHTML = marker.properties.title;
+          document.getElementById("shop-address").innerHTML = marker.properties.description;
+        })
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .addTo(map);
+      });
+      map.addControl(new mapboxgl.NavigationControl());
+
+      document.getElementById("card").setAttribute("class", "card mx-auto col-md-6 col-sm-12 img-fluid animated fadeInUp");
+      addElement("card", "div", "cardbody");
+      document.getElementById("cardbody").setAttribute("class", "card-body");
+      addElement("cardbody", "h5", "shop-name");
+      document.getElementById("shop-name").setAttribute("class", "card-title");
+      document.getElementById("shop-name").innerHTML = "Try clicking map markers!";
+      addElement("cardbody", "p", "shop-address");
+      document.getElementById("shop-address").setAttribute("class", "card-text");
+      document.getElementById("shop-address").innerHTML = "Clicking a map marker will show the shop name and address here!"
+    }
+
+    function addRoutesMap() {
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        center: [-2.993897, 56.466836],
+        zoom: 12
+      });
+      document.getElementById("card").setAttribute("class", "card mx-auto col-md-6 col-sm-12 img-fluid animated fadeOutDown");
+    }
+
+    function removeElement(Id) {
+      var element = document.getElementById(Id);
+      element.parentNode.removeChild(element);
+    }
+
+    function addElement(parentId, tag, id) {
+      var p = document.getElementById(parentId);
+      var newElement = document.createElement(tag);
+      newElement.setAttribute('id', id);
+      newElement.setAttribute("class", "img-fluid");
+      p.appendChild(newElement);
+    }
+
+
+
+  </script>
+  <script src="../scripts/mapUpdate.js"></script>
+</body>
 
 </html>

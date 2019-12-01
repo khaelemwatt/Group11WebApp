@@ -1,12 +1,52 @@
 body{
-  background-color: #3D5A6C;
+  background-color: #EDFFFA;
+  padding-bottom: 100px;
 }
+
+nav{
+  background-color: #6BC64D;
+}
+
+nav a, nav a:hover{
+  color: white;
+}
+
 #mapdiv{
   margin-top: 20px;
+}
+
+#map{
+  width: 570px;
+  height: 500px;
+}
+
+#card{
+  width: 540px;
+}
+
+.marker {
+  background-image: url("https://i.imgur.com/MK4NUzI.png");
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 @media (max-width: 767.98px){
   #mapdiv{
     margin-top: 0px;
+  }
+  #map{
+    max-height: 60vh;
+  }
+
+  #card{
+    max-height: 20vh;
+  }
+
+  .marker{
+    width:20px;
+    height:20px;
   }
 }
